@@ -1,0 +1,33 @@
+{
+  "name": "m6-d2-hw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -r dotenv/config -e js ./src/server.js",
+    "start": "node ./src/server.js "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aminatashin/M6-D2-HW.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aminatashin/M6-D2-HW/issues"
+  },
+  "homepage": "https://github.com/aminatashin/M6-D2-HW#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "pg": "^8.7.3",
+    "sequelize": "^6.19.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0",
+    "nodemon": "^2.0.15"
+  }
+}

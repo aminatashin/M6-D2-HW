@@ -1,5 +1,5 @@
 import reviews from "./reviews.js";
 import product from "./product.js";
-reviews.hasMany(product);
-product.belongsTo(reviews);
+product.hasMany(reviews);
+reviews.belongsTo(product);
 export default { product, reviews };

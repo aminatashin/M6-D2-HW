@@ -1,5 +1,6 @@
 import sequelize from "../sequelize.js";
 import { DataTypes } from "sequelize";
+// ---------------------------------------------
 const reviews = sequelize.define("reviews", {
   id: {
     type: DataTypes.UUID,

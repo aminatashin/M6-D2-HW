@@ -3,6 +3,7 @@ import cors from "cors";
 import { testDB, syncDB } from "../db/sequelize.js";
 import productRouter from "../services/Product/product.js";
 import reviewsRouter from "../services/Reviews/reviews.js";
+import userRouter from "../services/user/user.js";
 
 // -----------------------------------------------
 
@@ -14,6 +15,7 @@ server.use(cors());
 // -------------------------------------------------
 server.use("/Reviews", reviewsRouter);
 server.use("/Product", productRouter);
+server.use("/user", userRouter);
 
 // --------------------------------------------------
 

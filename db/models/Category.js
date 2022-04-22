@@ -1,14 +1,15 @@
 import sequelize from "../sequelize.js";
 import { DataTypes } from "sequelize";
-// ---------------------------------------------
-const reviews = sequelize.define("reviews", {
+// -----------------------------------------
+const category = sequelize.define("category", {
   id: {
+    primaryKey: true,
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
-    primaryKey: true,
   },
   text: {
     type: DataTypes.STRING,
+    allowNull: false,
   },
 });
-export default reviews;
+export default category;

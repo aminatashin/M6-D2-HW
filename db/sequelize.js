@@ -14,7 +14,7 @@ export const testDB = async () => {
   }
 };
 export const syncDB = async () => {
-  await sequelize.sync();
+  await sequelize.sync({ force: true });
   console.log("All models were synchronized successfully.");
 };
 export default sequelize;

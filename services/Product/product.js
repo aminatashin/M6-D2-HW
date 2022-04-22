@@ -2,12 +2,12 @@ import expresss from "express";
 import models from "../../db/models/models.js";
 
 // -------------------------------------------------
-const { product, reviews } = models;
+const { product, reviews, user } = models;
 const productRouter = expresss.Router();
 // ---------------------------------------------------
 productRouter.get("/", async (req, res, next) => {
   try {
-    const getProduct = await product.findAll({ include: reviews });
+    const getProduct = await product.findAll({ include: reviews, user });
     res.send(getProduct);
   } catch (error) {
     console.log(error);
@@ -30,7 +30,14 @@ productRouter.get("/:id", async (req, res, next) => {
 productRouter.post("/", async (req, res, next) => {
   try {
     console.log(req.body);
-    const newproduct = await product.create(req.body);
+    const newproduct = await product.create({
+      name: req.body.name,
+      category: req.body.category,
+      description: req.body.description,
+      image: req.body.image,
+      price: req.body.price,
+      userId: req.body.userId,
+    });
     res.send(newproduct);
   } catch (error) {
     console.log(error);

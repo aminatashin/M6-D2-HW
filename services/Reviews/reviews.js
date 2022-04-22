@@ -1,7 +1,7 @@
 import expresss from "express";
 import models from "../../db/models/models.js";
 import sequelize from "sequelize";
-const { product, reviews } = models;
+const { product, reviews, user } = models;
 const reviewsRouter = expresss.Router();
 
 reviewsRouter.get("/", async (req, res, next) => {
@@ -27,6 +27,7 @@ reviewsRouter.get("/", async (req, res, next) => {
 
     const getReviews = await reviews.findAll({
       include: product,
+      user,
       where: query,
       //  order: [[sequelize.fn("lower", sequelize.col("title")), "asc"]],
     });
@@ -52,8 +53,8 @@ reviewsRouter.post("/", async (req, res, next) => {
   try {
     const newReviews = await reviews.create({
       text: req.body.text,
-      username: req.body.username,
       productId: req.body.productId,
+      userId: req.body.userId,
     });
     res.send(newReviews);
   } catch (error) {

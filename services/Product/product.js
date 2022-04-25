@@ -7,7 +7,7 @@ const productRouter = expresss.Router();
 // ---------------------------------------------------
 productRouter.get("/", async (req, res, next) => {
   try {
-    const getProduct = await product.findAll({ include: reviews, user });
+    const getProduct = await product.findAll({ include: [user, reviews] });
     res.send(getProduct);
   } catch (error) {
     console.log(error);

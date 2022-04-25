@@ -26,8 +26,7 @@ reviewsRouter.get("/", async (req, res, next) => {
     }
 
     const getReviews = await reviews.findAll({
-      include: product,
-      user,
+      include: [product, user],
       where: query,
       //  order: [[sequelize.fn("lower", sequelize.col("title")), "asc"]],
     });
@@ -41,6 +40,7 @@ reviewsRouter.get("/:id", async (req, res, next) => {
   try {
     const getidReviews = await reviews.findByPk(req.params.id, {
       include: product,
+      user,
     });
     res.send(getidReviews);
   } catch (error) {

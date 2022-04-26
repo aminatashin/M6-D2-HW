@@ -1,14 +1,15 @@
 import expresss from "express";
+
 import models from "../../db/models/models.js";
 
 // -------------------------------------------------
-const { product, reviews, user } = models;
+const { product, reviews, user, category } = models;
 const productRouter = expresss.Router();
 // ---------------------------------------------------
 productRouter.get("/", async (req, res, next) => {
   try {
     const getProduct = await product.findAll({
-      include: [user, { model: reviews, include: [user] }],
+      include: [user, category, { model: reviews, include: [user] }],
     });
     res.send(getProduct);
   } catch (error) {
@@ -20,7 +21,7 @@ productRouter.get("/", async (req, res, next) => {
 productRouter.get("/:id", async (req, res, next) => {
   try {
     const getidproduct = await product.findByPk(req.params.id, {
-      include: [user, { modell: reviews, include: [user] }],
+      include: [user, { model: reviews, include: [user] }],
     });
     res.send(getidproduct);
   } catch (error) {

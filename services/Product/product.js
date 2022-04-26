@@ -9,7 +9,7 @@ const productRouter = expresss.Router();
 productRouter.get("/", async (req, res, next) => {
   try {
     const getProduct = await product.findAll({
-      include: [user, category, { model: reviews, include: [user] }],
+      include: [user, { model: reviews, include: [user] }],
     });
     res.send(getProduct);
   } catch (error) {

@@ -7,15 +7,15 @@ const { category, productcategory } = models;
 // --------------------------------------------------
 const categoryRouter = express.Router();
 // --------------------------------------------------
-// categoryRouter.get("/", async (req, res, next) => {
-//   try {
-//     const getcategory = await category.findAll(req.body);
-//     res.send(getcategory);
-//   } catch (error) {
-//     console.log(error);
-//     next(error);
-//   }
-// });
+categoryRouter.get("/", async (req, res, next) => {
+  try {
+    const getcategory = await category.findAll(req.body);
+    res.send(getcategory);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
 // --------------------------------------------------
 categoryRouter.get("/:id", async (req, res, next) => {
   try {
